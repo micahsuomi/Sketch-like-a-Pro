@@ -1,0 +1,32 @@
+<%- include("partials/header") %>
+
+<div class="registration-container" style="padding: 10rem 40rem">
+    <h1>Register A New Account</h1>
+    
+    <form class="ui form" action="/register" method="POST">
+      <div class="field">
+        <label>First Name</label>
+        <input type="text" name="firstName" placeholder="First Name">
+      </div>
+      <div class="field">
+        <label>Last Name</label>
+        <input type="text" name="lastName" placeholder="Last Name">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="text" name="email" placeholder="E-mail">
+      </div>
+        <div class="field">
+          <label>User Name</label>
+          <input type="text" name="username" placeholder="username">
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="password">
+        </div>
+        <p>Already have an account? <a href="/login">Log In</a></p>
+        <button class="ui button primary" type="submit">Register</button>
+      </form>
+</div>
+
+<%- include("partials/footer") %>

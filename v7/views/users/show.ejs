@@ -1,0 +1,86 @@
+<%- include("../partials/header") %>
+
+
+<div class="user-section__container">
+<% if(currentUser){ %>
+
+<h1>Welcome to Your Profile Page <%= user.username %></h1>
+<% } %>
+
+<div class="user-container">
+    <div class="user-left">
+        <div class="image-container">
+            <% if(user.image.length < 1) { %>
+                <img src ="https://www.pngitem.com/pimgs/m/78-786501_black-avatar-png-user-icon-png-transparent-png.png" height="100%; width: 100%;">
+            <% } else { %>
+                <img src="<%= user.image %>" height="100%; width: 100%;">
+
+            <% } %>
+
+           
+        </div>
+ 
+    </div>
+    <div class="user-right">
+    <h2>Name: <%= user.firstName %>  <%= user.lastName %></h2>
+    <p>Username: <%= user.username %></p>
+    <p>Email: <%= user.email %></p>
+
+    <% if(user.city.length < 1) { %>
+        <p>City: Add City</p>
+    <% } else { %>
+        <p>City: <%= user.city %></p>
+    <% } %>
+     
+    <% if(user.country.length < 1) { %>
+        <p>Country: Add Country</p>
+    <% } else { %>
+        <p>Country: <%= user.country %></p>
+    <% } %>
+    <% if(currentUser) { %>
+    <a href="/users/<%= currentUser._id %>/edit" class="ui button primary">Update Profile</a>
+    <% } %>
+
+</div>
+</div>
+<h1>Gallery</h1>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 4rem;">
+
+    <% user.gallery.forEach(function(gallery) { %>
+  
+      <div class="ui card" style="height: 35rem; width: 25rem; margin: 1rem;">
+          <div class="image-container">
+              <img src="<%= gallery.image %>" class="gallery-image">
+          </div>
+          <div class="content">
+            <a class="header"><h4><%= gallery.name %></h4></a>
+            <div class="meta">
+              <span class="date">Created in <%= gallery.created.toDateString() %></span>
+            </div>
+            <p><%= gallery.description %></p>
+            
+            <p> <a class="avatar">
+              <% if(gallery.author.image.length < 1) { %>
+                  <img src ="https://www.pngitem.com/pimgs/m/78-786501_black-avatar-png-user-icon-png-transparent-png.png">
+              <% } else { %>
+                  <img src="<%= gallery.author.image %>"> 
+              <% } %>
+            </a>
+  
+          </i>Created by <%= gallery.author.username %> </p>
+  
+          </div>
+          <div class="extra content" style="display: flex; justify-content: center;">
+            <a>
+              <a class="ui primary button" href="/galleries/<%= gallery._id %>">View</a>
+            </a>
+          </div>
+        </div>
+        
+        <% }) %>
+    </div>
+
+
+</div>
+
+<%- include("../partials/footer") %>

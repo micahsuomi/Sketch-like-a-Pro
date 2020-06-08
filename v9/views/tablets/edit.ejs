@@ -1,0 +1,26 @@
+<%- include("../partials/header") %>
+
+<div style="padding: 20rem 30rem">
+<form class="ui form"  action="/tablets/<%= tablet._id %>/?_method=PUT" method="POST" enctype="multipart/form-data">
+  <h2>Edit Review for <%= tablet.name %></h2>
+    <div class="field">
+      <label>Tablet Name</label>
+      <input type="text" name="name" value="<%= tablet.name %>">
+    </div>
+    <div class="field">
+    <label for="image">Image Upload</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+    </div>
+    <div class="field">
+        <label>Description</label>
+        <textarea type="text" name="description"><%= tablet.description %></textarea>
+      </div>
+  
+    <button class="ui primary button" type="submit">Submit</button>
+    <a href="/tablets/<%= tablet._id %>" class="ui red button">Cancel</a>
+
+  </form>
+
+</div>
+
+  <%- include("../partials/footer") %>

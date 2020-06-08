@@ -1,0 +1,313 @@
+<%- include("partials/header") %>
+
+  <!-- Header -->
+  <section class="front-end-container show-desktop hide-mobile">
+   
+    <div class="container-image hide-tablet">  
+      <div class="row">
+          <div class="hide-desktop"></div>
+          <div class="liquid-image show-desktop hide-tablet"></div>
+        </div>
+          <div class="header-container">
+                <h1 class="header-primary">Sketch Like a Pro</h1>
+                <p class="subheading">A Community for Digital Artists</p>
+                <a href="/galleries" class="btn-check">View Our Gallery</a>
+          </div>
+        </div>
+   
+      </section>
+      
+      <main>
+
+      <a href="/galleries" style="text-align: center"><h1>Latest Artwork</h1></a>
+      <!-- this comes from the gallery page -->
+      <% gallery.length = 4 %>
+      <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 4rem;">
+
+        <% gallery.forEach(function(gallery) { %>
+      
+          <div class="ui card">
+            <div class="image-container">
+                <img src="<%= gallery.image %>" class="gallery-image">
+            </div>
+            <div class="content">
+              <a class="header"><h4><%= gallery.name %></h4></a>
+              <div class="meta">
+                <span class="date">Created in <%= gallery.created.toDateString() %></span>
+              </div>
+              <p><%= gallery.description %></p>
+              
+              <p> <a class="avatar">
+                <% if(gallery.author.image.length < 1) { %>
+                    <img src ="https://www.pngitem.com/pimgs/m/78-786501_black-avatar-png-user-icon-png-transparent-png.png">
+                <% } else { %>
+                    <img src="<%= gallery.author.image %>"> 
+                <% } %>
+              </a>
+              <p>Created by <a href="/users/<%= gallery.author.id %>"><%= gallery.author.username %></a></p>
+    
+            </div>
+            <div class="extra content" style="display: flex; justify-content: center;">
+              <a>
+                <a class="ui primary button" href="/galleries/<%= gallery._id %>">View</a>
+              </a>
+            </div>
+          </div>
+    
+      
+      <% }) %>
+      </div>
+      
+      
+
+<!-- gallery -->
+<section class="gallery-container" id="gallery">
+  <h2 class="gallery-header">Gallery</h2>
+
+  <div class="gallery-wrapper">
+
+      <div class="card-image">
+        <div class="card-image-side card-image-side-front card-image-side-front-1">
+          <img src="../imgs/gallery1.png" width="100%">
+        </div>
+          <div class="card-image-side card-image-side-back">
+            <div class="cta">
+              <img src="imgs/artist1.png" alt="">
+              <div class="artist-description">
+                <ul class="artist-details">
+                  <li>Name: Amy Wang</li>
+                  <li>Age: 23</li>
+                  <li>Location: New York</li>
+                  <li>Tablet: Huion H430P</li>
+
+                </ul>
+                
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, ipsam fugit necessitatibus nostrum aperiam at?</p>
+
+                <a href="#"><button class="btn-check-work">Check Work</button></a>
+              </div>
+            </div>
+          </div>
+      </div>
+
+        <div class="card-image">
+          <div class="card-image-side card-image-side-front card-image-side-front-2">&nbsp;</div>
+            <div class="card-image-side card-image-side-back">
+              <div class="cta">
+              <img src="imgs/artist2.png" alt="">
+              <div class="artist-description">
+                <ul class="artist-details">
+                  <li>Name: Maria Gimenez</li>
+                  <li>Age: 28</li>
+                  <li>Location: Madrid</li>
+                  <li>Tablet: Wacom</li>
+
+                </ul>
+                
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, ipsam fugit necessitatibus nostrum aperiam at?</p>
+
+                <a href="#"><button class="btn-check-work">Check Work</button></a>
+              </div>
+            </div>
+            </div>
+        </div>
+
+          <div class="card-image">
+            <div class="card-image-side card-image-side-front card-image-side-front-3">&nbsp;</div>
+              <div class="card-image-side card-image-side-back">
+                <div class="cta">
+              <img src="imgs/artist3.png" alt="">
+              <div class="artist-description">
+                <ul class="artist-details">
+                  <li>Name: John Doe</li>
+                  <li>Age: 30</li>
+                  <li>Location: London</li>
+                  <li>Tablet: Huion Pro 610</li>
+
+                </ul>
+                
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, ipsam fugit necessitatibus nostrum aperiam at?</p>
+
+                <a href="#"><button class="btn-check-work">Check Work</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+
+</div>
+</section>
+</div>
+</div>
+
+<!--TABLET REVIEWS-->
+<div class="tablet-container" id="tablet-container">
+<h2 class="text-center section-header">Tablet Reviews</h2>
+
+<div class="tablet-wrapper">
+
+<div class="tablet-card grow">
+<div class="tablet-image tablet-image-1">&nbsp;</div>
+<div class="tablet-description">
+<h4>Huion H430P</h4>
+<ul>
+<li>
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star-half-alt"></i></li>
+<li>310 Reviews</li>
+<li>Top Users</li>
+<li class="top-users-container">
+  <img src="imgs/community1.png" alt="">
+  <img src="imgs/community3.png" alt="">
+  <img src="imgs/community2.png" alt="">
+  <img src="imgs/artist3.png" alt=""></li>
+</ul>
+<div class="btn-review-container">
+<a href="#" class="btn-info btn-review">Leave a Review</a>
+</div>
+</div>
+</div>
+
+<div class="tablet-card grow">
+<div class="tablet-image tablet-image-2">&nbsp;</div>
+<div class="tablet-description">
+<h4>HGW</h4>
+<ul>
+  <li>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i></li>
+  <li>400 Reviews</li>
+  <li>Top Users</li>
+  <li class="top-users-container">
+    <img src="imgs/community1.png" alt="">
+    <img src="imgs/artist2.png" alt="">
+    <img src="imgs/artist5.png" alt="">
+    <img src="imgs/artist6.png" alt=""></li>
+</ul>
+
+<div class="btn-review-container">
+  <a href="#" class="btn-info btn-review">Leave a Review</a>
+</div>
+</div>
+</div>
+
+
+<div class="tablet-card grow">
+<div class="tablet-image tablet-image-3">&nbsp;</div>
+<div class="tablet-description">
+  <h4>Huion Pro 610</h4>
+  <ul>
+    <li>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star-half-alt"></i></li>
+    <li>350 Reviews</li>
+    <li>Top Users</li>
+    <li class="top-users-container">
+      <img src="imgs/community3.png" alt="">
+      <img src="imgs/community1.png" alt="">
+      <img src="imgs/artist4.png" alt="">
+      <img src="imgs/artist2.png" alt=""></li>
+  </ul>
+
+  <div class="btn-review-container">
+    <a href="#" class="btn-info btn-review">Leave a Review</a>
+  </div>
+</div>
+</div>
+
+<div class="tablet-card grow">
+  <div class="tablet-image tablet-image-4">&nbsp;</div>
+  <div class="tablet-description">
+    <h4>Wacom</h4>
+    <ul>
+      <li>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i></li>
+      <li>390 Reviews</li>
+      <li>Top Users</li>
+      <li class="top-users-container"><img src="imgs/community1.png" alt="">
+        <img src="imgs/community3.png" alt="">
+        <img src="imgs/community2.png" alt="">
+        <img src="imgs/artist3.png" alt=""></li>
+    </ul>
+
+    <div class="btn-review-container">
+      <a href="#" class="btn-info btn-review">Leave a Review</a>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<!--COMMUNITY-->
+<section>
+
+<div class="community-container"> 
+<div class="bg-video">
+<video class="bg-video-content" autoplay muted loop>
+<source src="imgs/Designer.mp4" type="video/mp4">
+  Your browser is not supported
+</video>
+</div>
+<h1 class="community-header">Community</h1>
+<div class="community-wrapper">
+
+<div class="community-box grow2">
+<img src="imgs/community1.png" class="community-image image-fluid" alt="community image 1">
+<blockquote class="blockquote text-center"><p class="grey-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+<p class="blue-text"><strong>Tim Lee, L.A., U.S.</strong></p></blockquote>
+</div>
+
+<div class="community-box grow2">
+<img src="imgs/community2.png" class="community-image image-fluid" alt="community image 2">
+<blockquote class="blockquote grey-text text-center"><p class="grey-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+<p class="blue-text"><strong>Ana M. Mendoza, Vigo, SP </strong></p></blockquote>
+</div>
+
+
+  <div class="community-box grow2">
+    <img src="imgs/community3.png" class="community-image image-fluid" alt="community image">
+    <blockquote class="blockquote grey-text text-center"><p class="grey-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+    <p class="blue-text"><strong>Mirtel Tamm, Tallin, EST</strong></p></blockquote>
+  </div>
+
+  <div class="community-box grow2">
+    <img src="imgs/community4.png" class="community-image image-fluid" alt="community image">
+    <blockquote class="blockquote grey-text text-center"><p class="grey-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+    <p class="blue-text"><strong>Jussi Heikkinen, Jyvaskyla, FI</strong></p></blockquote>
+  </div>
+  </div>
+
+
+</div>
+</section>
+
+
+</div>
+        <% if(!currentUser) { %>
+          <div class="sign-up-container" id="sign-up-container">
+            <div class="sign-up-wrapper">
+              <h1 class="sign-up-header">Ready to share your work?</h1>
+              <h2 class="sign-up-subheader">Join a great community of digital artist!</h2> 
+              <a href="/register" class="ui primary button" style="padding: 1.2rem; width: 15rem; margin-top: 1rem;">SIGN UP</a>
+            </div>
+          </div>
+        <% } %>
+
+        <!-- Button that goes back to top -->
+<button onclick="topFunction()" class="btn-back-to-top" id="myBtn" title ="Go to Top">
+  <img src="imgs/Up arrow small.png"></button>
+      
+        </main>
+
+
+<%- include("partials/footer") %>
+

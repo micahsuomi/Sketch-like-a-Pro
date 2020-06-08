@@ -1,0 +1,30 @@
+const mongoose = require('mongoose');
+
+const gallerySchema = new mongoose.Schema ({
+    name: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    }, 
+    created: {
+        type: Date, 
+        default: Date.now
+    },
+    //in here we do data association between a campground and the comment property
+    comments: [
+        {
+            //. we are only embedding an id here
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ]
+})
+
+module.exports = mongoose.model('Gallery', gallerySchema);

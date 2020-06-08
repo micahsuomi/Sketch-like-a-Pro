@@ -1,0 +1,23 @@
+<%- include("partials/header") %>
+
+<div style="padding: 20rem 30rem">
+<form class="ui form" method="POST" action="/galleries">
+    <div class="field">
+      <label>Name</label>
+      <input type="text" name="name" placeholder="name">
+    </div>
+    <div class="field">
+      <label>Image Url</label>
+      <input type="text" name="image" placeholder="insert image url">
+    </div>
+    <div class="field">
+        <label>Description</label>
+        <input type="text" name="description" placeholder="insert description">
+      </div>
+  
+    <button class="ui button" type="submit">Submit</button>
+  </form>
+
+</div>
+
+  <%- include("partials/footer") %>

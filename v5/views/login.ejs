@@ -1,0 +1,19 @@
+<%- include("partials/header") %>
+
+<div class="login-container" style="padding: 10rem 40rem">
+    <h1>Login To Your Account</h1>
+    <form class="ui form" action="/login" method="POST">
+        <div class="field">
+          <label>User Name</label>
+          <input type="text" name="username" placeholder="username">
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="password">
+        </div>
+        <p>Don't have an account yet? <a href="/register">Sign Up</a></p>
+        <button class="ui button primary" type="submit">Login</button>
+      </form>
+</div>
+
+<%- include("partials/footer") %>

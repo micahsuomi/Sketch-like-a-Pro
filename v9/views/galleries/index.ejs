@@ -1,0 +1,60 @@
+<%- include("../partials/header") %>
+
+<div style="padding: 5rem 10rem">
+<% if(!currentUser) { %>
+  <h1 style="text-align: center;"><a href="/register">Sign Up</a> to become a contributor of our Gallery!</h1>
+<% } else {%>
+  <h1 style="text-align: center;">Welcome to The Gallery Page <%= currentUser.username %></h1>
+  <a class="ui purple button" style="border-radius: 0;" href="/galleries/new"><i class="plus icon circle"></i>Add New</a>
+
+<% } %>
+<hr>
+
+
+<% if(gallery.length < 1) { %>
+  <h1 style="text-align: center; margin-top: 5rem;">There are currently no posts in the gallery</h1>
+<% } else { %>
+  <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 4rem;">
+
+  <% gallery.forEach(function(gallery) { %>
+
+    <div class="ui card">
+        <div class="image-container">
+            <img src="<%= gallery.image %>" class="gallery-image">
+        </div>
+        <div class="content">
+          <a class="header"><h4><%= gallery.name %></h4></a>
+          <div class="meta">
+            <span class="date">Created in <%= gallery.created.toDateString() %></span>
+          </div>
+          <p><%= gallery.description %></p>
+          
+          <p> <a class="avatar">
+            <% if(gallery.author.image.length < 1) { %>
+                <img src ="https://www.pngitem.com/pimgs/m/78-786501_black-avatar-png-user-icon-png-transparent-png.png">
+            <% } else { %>
+                <img src="<%= gallery.author.image %>"> 
+            <% } %>
+          </a>
+          <p>Created by <a href="/users/<%= gallery.author.id %>"><%= gallery.author.username %></a></p>
+
+        </div>
+        <div class="extra content" style="display: flex; justify-content: center;">
+          <a>
+            <a class="ui primary button" href="/galleries/<%= gallery._id %>">View</a>
+          </a>
+        </div>
+      </div>
+
+<% }) %>
+</div>
+
+<% } %>
+
+
+
+</div>
+
+<%- include("../partials/footer") %>
+
+

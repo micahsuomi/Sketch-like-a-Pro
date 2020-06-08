@@ -1,0 +1,104 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketch Like a Pro</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" type='text/css' href="../../public/assets/style/style.css"> 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+
+
+    
+</head>
+<body>
+    
+    <!-- navbar -->
+       <!-- navbar -->
+       <nav class="navbar hideonload">
+        <div class="hamburger-bar hide-desktop show-tablet">
+            <i class="fas fa-bars fa-4x"></i>
+          </div>
+
+        
+        <div class="navbar-brand-img"><a href="/"><img src="imgs/logo.png" alt="sketch logo" id="logo" class="hide-mobile"></a></div>
+      
+          <ul class="navbar-links links_left">
+              <li class="navbar-close hide-desktop show-tablet" id="exit">
+                  <i class="far fa-times-circle fa-4x"></i> 
+              </li>
+            <li class="nav-item grow"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item grow"><a class="nav-link" href="/about">About</a></li>
+            <li class="nav-item grow"><a class="nav-link" href="/galleries">Galleries</a></li>
+            <li class="nav-item grow"><a class="nav-link" href="/tablets">Tablet Reviews</a></li>
+    
+          </ul>
+          <ul class="navbar-links navbar-right">
+            <% if(!currentUser) { %>
+              <li class="nav-item grow"><a class="nav-link" href="/login">Sign In</a></li>
+              <li class="nav-item grow"><a class="nav-link" href="/register">Sign Up</a></li>
+              <%} else { %>
+              <li><a href="#">Signed in as <a href="/users/<%= currentUser._id %>"><%= currentUser.username %></a></li>
+              <li class="nav-item grow"><a class="nav-link" href="/logout">Logout</a></li>
+              <% } %>
+          </ul>
+        
+        </div>
+      </nav>
+
+<!-- Header -->
+<div class="flash-messages__container">
+<% if(error && error.length > 0) { %>
+  <div class="ui warning message flash-warning">
+    <i class="close icon close-icon"></i>
+    <div class="header">
+      <%= error %>
+    </div>
+  </div>
+<% } else if(success && success.length > 0) { %>
+  <div class="ui success message flash-warning">
+    <i class="close icon close-icon"></i>
+    <div class="header">
+      <%= success %>
+    </div>
+  </div> 
+<% } else if(action && action.length > 0) {%>
+  <div class="ui violet message flash-warning">
+    <i class="close icon close-icon"></i>
+    <div class="header">
+      <%= action %>
+    </div>
+  </div>
+  <% } %>
+</div>
+
+
+
+
+
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="semantic/dist/semantic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script>
+    $('.message .close')
+    .on('click', function() {
+      $(this)
+        .closest('.message')
+        .transition('fade')
+      ;
+    })
+  ;
+  </script>   
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/108/three.min.js" integrity="sha256-3mBEX8I0uMLF7+AUjJeTCelosuorzYpqwBMBPDTyQqY=" crossorigin="anonymous"></script>
+   
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
+  <script src="../../public/js/hover.js"></script>
+

@@ -1,0 +1,36 @@
+<%- include("../partials/header") %>
+
+<div class="tablet-review__container">
+<a class="ui purple basic button back-to-tablets" href="/tablets"><i class="arrow left icon"></i>Back to Tablets</a>
+<h2><%= tablet.name %></h2>
+<div class="tablet-author__wrapper">
+<h3>Reviewed by: <a href="/users/<%= tablet.author.id %>"><%= tablet.author.username %></a></h3>
+<a class="avatar">
+    <% if(tablet.author.avatar.length < 1) { %>
+        <img src ="https://www.pngitem.com/pimgs/m/78-786501_black-avatar-png-user-icon-png-transparent-png.png" style="width: 5%">
+    <% } else { %>
+        <img src="<%= tablet.author.avatar %>" style="width: 5%;"> 
+    <% } %>
+  </a>
+</div>
+<img src="<%= tablet.image %>">
+<div class="tablet-review__content">
+    <p><%= tablet.description %></p>
+</div>
+<h4>Written By: <%= tablet.author.firstName %> <%= tablet.author.lastName %></h4>
+
+<% if(currentUser && tablet.author.id.equals(currentUser.id)) { %>
+    <div class="review-edit-delete__wrapper">
+        <a class="ui button basic orange grow" href="/tablets/<%= tablet._id %>/edit"><i class="edit outline icon"></i>Edit Review</a>
+        <form id="delete-form" action="/tablets/<%= tablet._id %>/?_method=DELETE" method="POST">
+            <button class="ui button basic red grow">
+                <i class="trash alternate outline icon"></i>
+                Delete Review
+            </button>
+        </form>
+        </div>
+<% } %>
+
+</div>
+
+<%- include("../partials/footer") %>

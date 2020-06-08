@@ -1,0 +1,51 @@
+<%- include("../partials/header") %>
+
+
+<% if(gallery) { %>
+
+    <div style="padding: 8rem 15rem">
+        <img src="<%= gallery.image %>" width="100%">
+        <h4><%= gallery.name %> </h4>
+        <p><%= gallery.description %></p>
+        <div class="ui comments">
+            <h4 class="ui dividing header">Comments</h4>
+
+            <% if(gallery.comments.length < 1) { %>
+                <p>No comments yet</p>
+            <% } else { %>
+
+                <% gallery.comments.forEach(function(comment) { %>
+
+                    <div class="content" style="margin-top: 1rem;">
+                            <a class="author"><%= comment.author %></a>
+                            <div class="metadata">
+                              <span class="date"><%= comment.created.toDateString() %></span>
+                            </div>
+                            <div class="text">
+                                <%= comment.text %>
+                            </div>
+                
+                        <% }) %>
+
+            <% }%>
+     
+                <div class="add-new__wrapper" style="margin-top: 1rem;">
+                    <a class="ui purple basic button" href="/galleries">Back to Galleries</a>
+                    <a href="/galleries/<%= gallery._id %>/comments/new" class="ui blue labeled submit icon button"><i class="icon edit"></i>Add New Comment</a>
+        
+                </div>
+            </div>
+        </div>
+        
+      
+        
+
+    </div>
+</div>
+
+
+<% } %>
+
+
+
+<%- include("../partials/footer") %>

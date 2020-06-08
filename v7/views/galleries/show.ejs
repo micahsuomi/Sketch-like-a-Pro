@@ -1,0 +1,101 @@
+<%- include("../partials/header") %>
+
+
+<% if(gallery) { %>
+
+    <div class="gallery-item__container" style="padding: 8rem 15rem">
+        <a class="ui purple basic button" href="/galleries"><i class="arrow left icon"></i>Back to Galleries</a>
+
+        <img src="<%= gallery.image %>" width="40%" style="display: block">
+        <h2><%= gallery.name %> </h2>
+        <p><%= gallery.description %></p>
+        <p>Created by <a href="/users/<%= gallery.author.id %>"><%= gallery.author.username %></a></p>
+        <% if(currentUser && gallery.author.id.equals(currentUser.id)) { %>
+            <div class="edit-delete__wrapper">
+            <a href="/galleries/<%= gallery._id %>/edit" class="ui orange button">Edit Post</a>
+            <form action = "/galleries/<%= gallery._id %>/?_method=DELETE" method="POST"  id="delete-form">
+                <button class="ui red button">Delete Post</button>
+            </form>
+        </div>
+        <% } %>
+        <a href="/galleries/<%= gallery._id %>/likes/new">
+            <button>
+            <i class="thumbs up icon"></i>Like</button></a>
+        <div class="ui comments">
+            <h4 class="ui dividing header">Comments</h4>
+
+            <% if(gallery.comments.length < 1) { %>
+                <p>No comments yet</p>
+            <% } else { %>
+                <p><span><%= gallery.comments.length %></span> comments </p>    
+                <% gallery.comments.forEach(function(comment) { %>
+
+                    <!-- <div class="content" style="margin-top: 1rem;">
+                            <a class="author"><%= comment.author.username %></a>
+                            <div class="metadata">
+                              <span class="date"><%= comment.created.toDateString() %></span>
+                            </div>
+                            <div class="text">
+                                <%= comment.text %> -->
+
+                                <div class="ui comments">
+                                    <div class="comment">
+                                      <a class="avatar">
+                                        <% if(comment.author.avatar.length < 1) { %>
+                                            <img src ="https://www.pngitem.com/pimgs/m/78-786501_black-avatar-png-user-icon-png-transparent-png.png">
+                                        <% } else { %>
+                                            <img src="<%= comment.author.avatar %>"> 
+                                        <% } %>
+
+                                      </a>
+
+                                      <div class="content">
+                                        <a class="author"><%= comment.author.username %></a>
+                                        <div class="metadata">
+                                          <div class="date"><%= comment.created.toDateString() %></div>
+                                        </div>
+                                        <div class="text">
+                                            <%= comment.text %>
+                                        </div>
+                                      </div>
+                                  </div>
+            
+
+                                <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+                                    <div class="delete-edit__wrapper" style="display: flex; margin-top: 1rem;">
+                                        <a href="/galleries/<%= gallery._id %>/comments/<%= comment._id %>/edit" class="ui button basic orange small">Edit</a>
+                                        <form action="/galleries/<%= gallery._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
+                                            <button class="ui button basic small red">
+                                                Delete
+                                            </button>
+                                            
+                                        </form>
+                                    </div>
+                                <% } %>
+                                
+                            </div>
+                
+                        <% }) %>
+
+            <% }%>
+     
+                <div class="add-new__wrapper" style="margin-top: 1rem;">
+                    <a href="/galleries/<%= gallery._id %>/comments/new" class="ui blue labeled submit icon button"><i class="icon edit"></i>Add New Comment</a>
+        
+                </div>
+            </div>
+        </div>
+    </div>
+        
+      
+        
+
+    </div>
+</div>
+
+
+<% } %>
+
+
+
+<%- include("../partials/footer") %>

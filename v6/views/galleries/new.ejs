@@ -1,0 +1,24 @@
+<%- include("../partials/header") %>
+
+<div style="padding: 20rem 40rem">
+<form class="ui form" method="POST" action="/galleries">
+  <h4>Add a New Item to Your Collection!</h4>
+    <div class="field">
+      <label>Name</label>
+      <input type="text" name="name" placeholder="name">
+    </div>
+    <div class="field">
+      <label>Image Url</label>
+      <input type="text" name="image" placeholder="insert image url">
+    </div>
+    <div class="field">
+        <label>Description</label>
+        <input type="text" name="description" placeholder="insert description">
+      </div>
+  
+    <button class="ui primary button" type="submit">Submit</button>
+  </form>
+
+</div>
+
+  <%- include("../partials/footer") %>

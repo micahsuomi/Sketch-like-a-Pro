@@ -1,0 +1,18 @@
+<%- include("../partials/header") %>
+
+
+<div class="form-container">
+    <h4>Add A New Comment to <%= gallery.name %></h4>
+<form class="ui form comment-form" method="POST" action="/galleries/<%= gallery._id %>/comments">
+    <div class="field">
+      <label>Comment</label>
+      <textarea name="comment[text]" placeholder="write a comment here"></textarea>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center;">
+    <button class="ui primary button" type="submit" style="display: block">Submit</button>
+  </div>
+  </form>
+
+</div>
+
+  <%- include("../partials/footer") %>

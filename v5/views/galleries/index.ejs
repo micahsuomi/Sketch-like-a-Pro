@@ -1,0 +1,44 @@
+<%- include("../partials/header") %>
+
+<div style="padding: 5rem 10rem">
+<h1 style="text-align: center;">This is Your Gallery Page</h1>
+
+<a class="ui purple basic button" href="/galleries/new">Add New</a>
+
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 2rem;">
+<% gallery.forEach(function(gallery) { %>
+
+    <div class="ui card" style="height: 30rem; width: 20rem; margin: 1rem;">
+        <div class="image">
+            <img src="<%= gallery.image %>" style="height: 13rem; width: 100%;">
+        </div>
+        <div class="content">
+          <a class="header"><h4><%= gallery.name %></h4></a>
+          <div class="meta">
+            <span class="date">Created in <%= gallery.created.toDateString() %></span>
+          </div>
+          <p><%= gallery.description %></p>
+
+        </div>
+        <div class="extra content">
+          <a>
+            <i class="users icon"></i>
+            <a class="ui primary basic button" href="/galleries/<%= gallery._id %>">View</a>
+
+            
+
+          </a>
+        </div>
+      </div>
+
+
+
+<% }) %>
+
+
+</div>
+</div>
+
+<%- include("../partials/footer") %>
+
+

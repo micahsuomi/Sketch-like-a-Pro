@@ -1,0 +1,100 @@
+<%- include("partials/header") %>
+
+<div class="form-container">
+    <h1>Register A New Account</h1>
+    
+    <form class="ui form register-form" action="/register" method="POST">
+      <div class="field">
+        <label>First Name</label>
+        <input 
+        type="text" 
+        name="firstName" 
+        placeholder="First Name" 
+        class="first-name__input" 
+        value="<%= typeof firstName != 'undefined' ? firstName : '' %>" 
+        required>
+        <% if(errors[0] != '') { %>
+          <p class="warning"><%= errors[0].firstNameErr %></p>
+
+        <% } %>
+
+      </div>
+      <div class="field">
+        <label>Last Name</label>
+        <input 
+        type="text" 
+        name="lastName" 
+        placeholder="Last Name" 
+        class="last-name__input" 
+        value="<%= typeof lastName != 'undefined' ? lastName : '' %>" 
+        required>
+        <p class="warning-last-name"></p>
+        <% if(errors[1] != '') { %>
+          <p class="warning"><%= errors[1].lastNameErr %></p>
+
+        <% } %>
+
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input 
+        type="email" 
+        name="email" 
+        placeholder="E-mail" 
+        class="email-input" 
+        value="<%= typeof email != 'undefined' ? email : '' %>" 
+        required>
+        <% if(errors[2] != '') { %>
+          <p class="warning"><%= errors[2].emailErr %></p>
+
+        <% } %>
+
+      </div>
+        <div class="field">
+          <label>User Name</label>
+          <input 
+          type="text" 
+          name="username" 
+          placeholder="username" 
+          value="<%= typeof username != 'undefined' ? username : '' %>" 
+          required>
+          <% if(errors[3] != '') { %>
+            <p class="warning"><%= errors[3].usernameErr %></p>
+  
+          <% } %>
+
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input 
+          type="password" 
+          name="password" 
+          placeholder="password"
+          value="<%= typeof password != 'undefined' ? password : '' %>" 
+           required>
+          <% if(errors[4] != '') { %>
+            <p class="warning"><%= errors[4].pwErr %></p>
+  
+          <% } %>
+        </div>
+        <div class="field">
+          <label>Repeat your password</label>
+          <input 
+          type="password" 
+          name="password2" 
+          placeholder="repeat your password" 
+          value="<%= typeof password2 != 'undefined' ? password2 : '' %>" 
+          required>
+          <% if(errors[5] != '') { %>
+            <p class="warning"><%= errors[5].pwErr2 %></p>
+  
+          <% } %>
+        </div>
+        <div class="field">
+        <p>Already have an account? <a href="/login">Log In</a></p>
+        <button class="ui button primary register-btn" type="submit">Register</button>
+      </div>
+      </form>
+</div>
+
+<%- include("partials/footer") %>

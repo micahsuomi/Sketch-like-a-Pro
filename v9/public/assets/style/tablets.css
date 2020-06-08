@@ -1,0 +1,50 @@
+/* TABLETS INDEX*/
+.tablets-review__container {
+    padding: 5rem 15rem;
+}
+/* TABLETS CREATE*/
+
+
+/* TABLETS SHOW*/
+.tablet-review__container {
+    padding: 5rem 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-to-tablets {
+    align-self: flex-start;
+    border: 0px!important;
+}
+
+.tablet-review__container img {
+    width: 100%;
+}
+
+.tablet-author__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tablet-author__wrapper .avatar {
+    display: contents;
+    margin: 1rem;
+}
+
+.tablet-review__content p {
+    font-size: 16px;
+    line-height: 2.3;
+}
+
+.review-edit-delete__wrapper {
+    margin-top: 1rem;
+}
+
+
+
+
+
+/* TABLETS EDIT*/

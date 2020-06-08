@@ -1,0 +1,48 @@
+<%- include("../partials/header") %>
+
+<div class="form-container">
+<% if(user) { %>
+    <form class="ui form" action="/users/<%= user._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+        <h4 class="ui dividing header">Edit Profile For <%= currentUser.username %></h4>
+        <div class="field">
+          <div class="two fields">
+            <div class="field">
+              <label>First Name</label>
+              <input type="text" name="user[firstName]" value="<%= user.firstName %>">
+            </div>
+            <div class="field">
+              <label>Last Name</label>
+              <input type="text" name="user[lastName]" value="<%= user.lastName %>">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+            <label>Email</label>
+            <input type="text" name="user[email]" value="<%= user.email %>">
+        </div>
+          
+        <div class="two fields">
+          <div class="field">
+            <label>City</label>
+            <input type="text" name="user[city]" placeholder="city" value="<%= user.city %>">
+            </div>
+            <div class="field">
+                <label>Country</label>
+                <input type="text" name="user[country]" placeholder="country" value="<%= user.country %>">
+                </div>
+          </div>
+          <div class="field">
+          <label for="image">Image Upload</label>
+          <input type="file" id="image" name="image" accept="image/*" required>
+      </div>
+      <button class="ui primary button" type="submit">Update</button>
+    </div>
+        
+      </form>
+    </div>
+</div>
+
+<% } %>
+
+<%- include("../partials/footer") %>
+
