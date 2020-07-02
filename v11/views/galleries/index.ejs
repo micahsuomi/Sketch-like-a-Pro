@@ -1,0 +1,67 @@
+<%- include("../partials/header") %>
+
+<div style="padding: 15rem 15rem">
+<% if(!currentUser) { %>
+  <h1 style="text-align: center;"><a href="/register">Sign Up</a> to become a contributor of our Gallery!</h1>
+<% } else {%>
+  <h1 style="text-align: center;">Welcome to The Gallery Page <%= currentUser.username %></h1>
+  <a class="ui violet button big grow" style="border-radius: 15px 15px 0 0;" href="/galleries/new"><i class="plus icon"></i>Add New</a>
+
+<% } %>
+<hr>
+
+
+<% if(gallery.length < 1) { %>
+  <h1 style="text-align: center; margin-top: 5rem;">There are currently no posts in the gallery</h1>
+<% } else { %>
+  <div class="gallery-all__container">
+
+  <% gallery.forEach(function(gallery) { %>
+
+    <div class="ui card" style="height: 50rem;">
+        <div class="image-container">
+            <img src="<%= gallery.image %>" class="gallery-image">
+        </div>
+        <div class="content">
+          <a class="header"><h3><%= gallery.name %></h3></a>
+          <div class="meta">
+            <span class="date">Created in <%= gallery.created.toDateString() %></span>
+          </div>
+          
+          <p> <a class="avatar">
+            <% if(gallery.author.image === '') { %>
+                <img src ="https://www.pngitem.com/pimgs/m/78-786501_black-avatar-png-user-icon-png-transparent-png.png">
+            <% } else { %>
+                <img src="<%= gallery.author.image %>"> 
+            <% } %>
+          </a>
+          <p>Created by <a href="/users/<%= gallery.author.id %>"><%= gallery.author.username %></a></p>
+          <div class="extra" style="display: flex; justify-content: center; align-items: center;">
+          <i class="heart icon" style="color: var(--like)"></i>
+          <span style="font-weight: 700; color: var(--like); margin-top: .5rem;">
+            <%= gallery.likes.length %></span>
+          <i class="comment icon" style="color: var(--comment); margin-left: .7rem;"></i>
+          <span style="font-weight: 700; color:  var(--comment); margin-top: .5rem;">
+            <%= gallery.comments.length %></span>
+        </div>
+
+        </div>
+        <div class="extra content" style="display: flex; justify-content: center;">
+          <a>
+            <a class="ui violet button big" style="border-radius: 25px;" href="/galleries/<%= gallery._id %>">View</a>
+          </a>
+        </div>
+      </div>
+
+<% }) %>
+</div>
+
+<% } %>
+
+
+
+</div>
+
+<%- include("../partials/footer") %>
+
+

@@ -3,6 +3,7 @@ const router = express.Router();
 require('dotenv').config();
 const Gallery = require('../models/gallery');
 const User = require('../models/user');
+const Like = require('../models/like');
 const middleware = require('../middleware/index');
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -146,6 +147,49 @@ router.delete('/:id', middleware.checkPostOwnership, (req, res) => {
             })*/
            
         }
+    })
+})
+
+
+//Like route
+
+router.post('/:id/like', middleware.isLoggedIn, (req, res) => {
+    const id = req.params.id;
+   
+    Gallery.findById(id, (err, gallery) => {
+        console.log(id)
+        if(err) {
+            console.log(err);
+            res.redirect('back')
+        } else {
+            const foundUser = gallery.likes.some((like) => like.equals(req.user._id));
+            foundUser ? gallery.likes.pull(req.user) : gallery.likes.push(req.user);
+            gallery.save((err) => {
+                if(err) {
+                    req.flash('error', 'Something went wrong');
+                    res.redirect('back');
+                } else {
+                    console.log(gallery);
+                    res.redirect(`/galleries/${gallery._id}`);
+                }
+            });
+           
+              
+       
+        }
+
+    })
+});
+
+router.get('/:id/likes', (req, res) => {
+    Gallery.findById(req.params.id).populate('likes').exec((err, gallery) => {
+        if(err) {
+            req.flash('error', 'something went wrong')
+            res.redirect('back');
+        } else {
+            res.render('likes/index', {gallery});
+            console.log(gallery.likes)
+    }
     })
 })
 

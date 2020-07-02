@@ -19,7 +19,6 @@ const galleryRoutes = require('./routes/galleries');
 const commentRoutes = require('./routes/comments');
 const userRoutes = require('./routes/user');
 const tabletsRoutes = require('./routes/tablets');
-const likesRoutes = require('./routes/likes');
 
 
 app.use(express.static('public'))
@@ -81,7 +80,6 @@ app.get('/about', (req, res) => {
 app.use('/', indexRoutes);
 app.use('/galleries', galleryRoutes);
 app.use('/galleries/:id/comments', commentRoutes);
-app.use('/galleries/:id/likes', likesRoutes);
 app.use('/tablets', tabletsRoutes);
 app.use('/users', userRoutes);
 

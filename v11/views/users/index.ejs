@@ -1,0 +1,47 @@
+<%- include("../partials/header") %>
+
+<div style="padding: 15rem 15rem">
+<div class="users-wrapper">
+    <% users.forEach(function(user) { %>
+        <div class="ui card" style="height: 55rem;">
+            <div class="image-container">
+                <% if(user.image === '') { %>
+                    <img src ="https://www.pngitem.com/pimgs/m/78-786501_black-avatar-png-user-icon-png-transparent-png.png">
+                <% } else { %>
+                    <img src="<%= user.image %>" style="width: 100%"> 
+                <% } %>            
+            </div>
+            <div class="content">
+              <a class="header"><h3><%= user.firstName %> <%= user.lastName %></h3></a>
+              <p><%= user.username %></p>
+              <p>Latest Artwork</p>
+              <div class="meta">
+                <div style="display: flex; justify-content: center; align-items: center;">
+             <% user.gallery.length = 3 %>
+             <% user.gallery.forEach(function(gallery) { %>
+                <div class="user-image-container grow">
+                    <a href="/galleries/<%= gallery._id %>"><img src="<%= gallery.image %>" style="width: 60%"></a>
+                </div>
+            
+             <% }) %>  
+            </div>
+        </div>            
+              <p> <a class="avatar">
+               
+              </a>
+            
+    
+            </div>
+            <div class="extra content" style="display: flex; justify-content: center;">
+              <a>
+                <a class="ui violet button big" style="border-radius: 25px;" href="/users/<%= user._id %>">View User</a>
+              </a>
+            </div>
+          </div>
+
+    <% }) %>
+    
+</div>
+</div>
+
+<%- include("../partials/footer") %>

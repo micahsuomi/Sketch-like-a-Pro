@@ -95,10 +95,12 @@ main {
     opacity: .9;
     background: linear-gradient(to left, 
     #33383D, rgb(28, 29, 31));
-    position: relative;
+    position: fixed;
     padding: 2.5rem 2rem;
     align-items: center;
     justify-items: center;
+    width: 100%;
+    z-index: 3;
 }
 
 #logo {
@@ -869,7 +871,7 @@ header {
     top: 10%;
     z-index: 5;
     animation-name: flashDisappear;
-    animation-duration: 8000ms;
+    animation-duration: 2000ms;
     animation-fill-mode: forwards;
 }
 
@@ -957,10 +959,17 @@ label {
 /* Media Queries */
 
 /* Gallery all */
+
+.gallery-all__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
 .image-container {
     display: inline-block;
     overflow: hidden;
-    height: 310px;
   }
   
   .login-container {
@@ -989,6 +998,9 @@ label {
     margin-top: 2rem;
 }
 
+.like-btn {
+    background-color: none!important;
+}
 .edit-delete__wrapper {
     display: flex;
     justify-content: center;
@@ -1019,14 +1031,14 @@ label {
 .image-container {
     display: inline-block;
     overflow: hidden;
-    height: 350px;
-    width: 350px;
+    height: 272px;
+    width: 290px;
   }
 
 .user-container img {
     object-fit: cover;
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
    
 }
 
@@ -1274,6 +1286,53 @@ label {
     padding: 5rem 10rem;
 }
 
+/* LIKES */
+.likes-container {
+    position: fixed; 
+    top: 10%; 
+    background-color: rgba(99, 91, 91, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    padding: 10rem 40rem;
+    border-radius: 3px;
+}
+
+.likes-wrapper {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 40rem;
+    width: 35rem;
+    padding-top: 2rem;
+}
+
+.likes-closing__wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.user-like {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    justify-items: center;
+    align-content: center;
+    border-bottom: 1px solid lightgray;
+    padding: 1.3rem;   
+}
+
+.user-like:first-child(1) {
+    margin-top: 1rem;
+}
+
+.user-like img {
+    width: 4rem;
+    height: 4rem;
+}
 /* GALLERY */
 
 @media(max-width:768px) {

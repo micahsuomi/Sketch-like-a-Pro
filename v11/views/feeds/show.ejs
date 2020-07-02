@@ -1,0 +1,43 @@
+
+<%- include("../partials/header") %>
+
+<div style="min-height: 100vh; padding: 10rem 24rem;">
+    <h1 style="text-align: center;">Your Latest Feeds</h1>
+    <div class="feeds-wrapper">
+
+    <% foundFeeds.forEach(function(feed) { %>
+        <div class="ui feed feed-container" style="margin: 0.4em 0;">
+            <div class="event">
+                <div class="label">
+                    <img src="<%= feed.author.image %>">
+                  </div>
+                <div class="content">
+                    <p style="font-size: 14px">
+                        <% if(currentUser && feed.author.id.equals(currentUser._id)) { %>
+                            You <a href="<%= feed.link %>"><%= feed.text %></a>
+      
+                          <% } else { %>
+                            <%= feed.author.username %> <a href="<%= feed.link %>"><%= feed.text %></a>
+      
+                          <% } %>                    </p>
+                    <% if(feed.title != '') { %>
+                        <p><%= feed.title %></p>
+                        <% } %>
+
+                    <% if(feed.image != '') { %>
+                            <img src="<%= feed.image %>" class="feed-post__image">
+                        <% } %>
+                    <% if(feed.content != '' && feed.content != 'undefined') { %>
+
+                    <% } %> 
+                 
+
+                    <span class="date"><%= feed.created.toDateString() %></span>
+
+                </div>
+        </div>
+        </div>
+    <% }) %>
+</div>
+</div>
+<%- include("../partials/footer") %>

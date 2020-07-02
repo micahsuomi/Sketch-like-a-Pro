@@ -8,7 +8,8 @@ const LikesSchema = Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         },
-        username: String
+        username: String,
+        image: String
     },
     created: {
         type: Date,

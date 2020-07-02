@@ -18,11 +18,20 @@
             </form>
         </div>
         <% } %>
-        <!-- <form action="/galleries/<%= gallery._id %>" method="POST"> -->
-            <a href="/galleries/<%= gallery._id %>/likes/new" class="ui label" style="cursor: pointer; margin-top: 1rem;">
-            <i class="thumbs up icon"></i>Like</a>
-        <!-- </form> -->
-            <a href="/galleries/<%= gallery._id %>/likes">Likes</a>
+         <form action="/galleries/<%= gallery._id %>/like" method="POST"> 
+            <div class="ui labeled button" tabindex="0" style="margin-top: 1rem;">
+                <button class="ui blue button">
+                  <i class="heart icon"></i> Like
+                </button>
+                <a class="ui basic blue left pointing label" href="/galleries/<%= gallery._id %>/likes">
+                    <%= gallery.likes.length %> Like
+                </a>
+              </div>
+        </form>  
+
+            <!-- <a href="/galleries/<%= gallery._id %>/likes/new" class="ui label" style="cursor: pointer; margin-top: 1rem;">
+            <i class="thumbs up icon"></i>Like</a> -->
+            <a href="/galleries/<%= gallery._id %>/likes"><%= gallery.likes.length %> Likes</a>
 
         <div class="ui comments">
 

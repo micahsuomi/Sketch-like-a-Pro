@@ -1,0 +1,31 @@
+<%- include("../partials/header") %>
+
+<div style="padding: 10rem 40rem" class="form-container">
+<form class="ui form gallery-new__form" method="POST" action="/galleries" enctype="multipart/form-data">
+
+  <div style="display: flex; justify-content: flex-end; align-items: center;">
+    <a href="/posts"><i class="chevron circle left icon" style="color: orange"></i>
+      Cancel</a>
+  </div> 
+    <h2 style="text-align: center;">Add a New Item to Your Collection!</h2>
+    <div class="field">
+      <label>Name</label>
+      <input type="text" name="name" placeholder="name">
+    </div>
+    <div class="field">
+    <label for="image">Image Upload</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+    </div>
+    <div class="field">
+        <label>Description</label>
+        <textarea type="text" name="description" placeholder="insert description"></textarea>
+      </div>
+  
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <button class="ui button violet" style="border-radius: 25px;" type="submit">Submit</button>
+      </div>
+    </form>
+
+</div>
+
+  <%- include("../partials/footer") %>

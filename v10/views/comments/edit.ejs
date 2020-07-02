@@ -1,0 +1,18 @@
+<%- include("../partials/header") %>
+
+
+<div class="form-container">
+    <h4>Edit Comment</h4>
+<form class="ui form" action="/galleries/<%= gallery_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+    <div class="field">
+      <label>Comment</label>
+      <input type="text" name="comment[text]" value="<%= comment.text %>">
+    </div>
+  
+    <button class="ui primary button" type="submit">Update</button>
+    <a href="/galleries/<%= gallery_id %>" class="ui button orange">Cancel</a>
+  </form>
+
+</div>
+
+  <%- include("../partials/footer") %>

@@ -1,6 +1,6 @@
 <%- include("../partials/header") %>
 
-<div style="padding: 5rem 10rem">
+<div style="padding: 5rem 13rem">
 <% if(!currentUser) { %>
   <h1 style="text-align: center;"><a href="/register">Sign Up</a> to become a contributor of our Gallery!</h1>
 <% } else {%>
@@ -14,7 +14,7 @@
 <% if(gallery.length < 1) { %>
   <h1 style="text-align: center; margin-top: 5rem;">There are currently no posts in the gallery</h1>
 <% } else { %>
-  <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 4rem;">
+  <div class="gallery-all__container">
 
   <% gallery.forEach(function(gallery) { %>
 

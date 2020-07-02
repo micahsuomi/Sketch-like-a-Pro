@@ -1,0 +1,77 @@
+/* About */
+
+.about-container {
+    background: var(--grey);
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    margin-top: 6rem;
+
+}
+
+.about-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.about-paragraph {
+    background-color: rgb(14, 13, 13);
+    padding: 5rem 4rem;
+}
+.about-container .about-paragraph p {
+    text-align: left;
+    color: #fff;
+    padding: 3rem;
+}
+
+.about-img-1 {
+    background: url("../imgs/about-img-5.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.about-img-container {
+    padding: 0;
+}
+
+.about-img2-container {
+    padding: 5rem 3rem;
+}
+.about-img2-container .about-img2 {
+    width: 97%;
+}
+
+
+
+.about-container img {
+    width: 100%;
+    border-radius: 2px;
+    justify-items: center;
+}
+
+.community-img-container {
+    padding: 8rem 3rem;
+    
+}
+
+.community-img {
+    width: 111%;
+    height: 100%;
+}
+
+.about-container h3 {
+    font-weight: 500;
+    font-size: var(--font-size-medium);
+    color: #fff;
+    text-transform: uppercase;
+    margin: 1rem 7rem 1rem 7rem;
+}
+
+.about-paragraph p {
+    color: var(--darkgrey);
+    margin-top: 2rem;
+    line-height: 2;
+    font-size: var(--font-size-small);
+
+}
+

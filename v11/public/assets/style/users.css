@@ -1,0 +1,73 @@
+/* USER PAGE */
+
+/* USERS ALL */
+.users-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.user-image-container {
+    display: inline-block;
+    overflow: hidden;
+    height: 74px;
+    width: 74px;
+  }
+
+.user-image-container img {
+    object-fit: cover;
+    width: 100%;
+    height: 60%;
+    border-radius: 50%;
+   
+}
+/* USERS SHOW */
+.user-section__container {
+    padding: 15rem 10rem;
+}
+.user-section__container h1 {
+    text-align: center;
+}
+.user-container {
+    margin-top: 4rem;
+    border: 1px solid rgb(243, 239, 239);
+    padding: 7rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(245, 245, 253);
+    box-shadow: 0 1rem 2rem rgba(29, 26, 26, 0.1);
+
+}
+
+.image-container {
+    display: inline-block;
+    overflow: hidden;
+    height: 272px;
+    width: 290px;
+  }
+
+.user-container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+   
+}
+
+.user-gallery__container {
+    padding: 5rem 8rem;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* USER PROFILE EDIT */
+.form-container {
+    padding: 5rem 25rem;
+}
+
+

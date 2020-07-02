@@ -1,0 +1,26 @@
+<%- include("../partials/header") %>
+
+<div style="padding: 10rem 40rem">
+<form class="ui form gallery-edit__form" action="/galleries/<%= gallery._id %>/?_method=PUT" method="POST" enctype="multipart/form-data">
+  <h2>Edit Post <%= gallery.name %></h2>
+    <div class="field">
+      <label>Name</label>
+      <input type="text" value="<%= gallery.name %>" name="name">
+    </div>
+    <div class="field">
+      <label for="image">Image Upload</label>
+          <input type="file" id="image" name="image" accept="image/*" required>
+      </div>
+    <div class="field">
+        <label>Description</label>
+        <textarea type="text" name="description"><%= gallery.description %></textarea>
+      </div>
+  
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <button class="ui button violet" style="border-radius: 25px;" type="submit">Update</button>
+      </div>
+    </form>  </form>
+
+</div>
+
+  <%- include("../partials/footer") %>

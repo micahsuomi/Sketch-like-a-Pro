@@ -1,0 +1,206 @@
+<%- include("partials/header") %>
+
+  <!-- Header -->
+  <section class="front-end-container show-desktop hide-mobile">
+   
+    <div class="container-image hide-tablet">  
+      <div class="row">
+          <div class="hide-desktop"></div>
+          <div class="liquid-image show-desktop hide-tablet"></div>
+        </div>
+          <div class="header-container">
+                <h1 class="header-primary">Sketch Like a Pro</h1>
+                <p class="subheading">A Community for Digital Artists</p>
+                <a href="/galleries" class="btn-check">View Our Gallery</a>
+          </div>
+        </div>
+      </section>
+
+      <div style="min-height: 100vh; padding: 10rem 24rem;">
+        <h1 style="text-align: center;">Latest Feeds</h1>
+        <div class="feeds-wrapper">
+    
+        <% feeds.forEach(function(feed) { %>
+            <div class="ui feed feed-container" style="margin: 0.4em 0;">
+                <div class="event">
+                    <div class="label">
+                        <img src="<%= feed.author.image %>">
+                      </div>
+                    <div class="content">
+                        <p style="font-size: 14px">
+                            <%= feed.author.username %> <a href="<%= feed.link %>"><%= feed.text %></a>
+                        </p>
+                        <% if(feed.title != '') { %>
+                            <p><%= feed.title %></p>
+                            <% } %>
+    
+                        <% if(feed.image != '') { %>
+                                <img src="<%= feed.image %>" class="feed-post__image">
+                            <% } %>
+                        <% if(feed.content != '' && feed.content != 'undefined') { %>
+    
+                        <% } %> 
+                     
+                        <span class="date"><%= feed.created.toDateString() %></span>
+
+                       
+                    </div>
+            </div>
+            </div>
+        <% }) %>
+        <a href="/feeds">View All</a>
+    </div>
+    </div>
+     
+    <h2 class="gallery-header">Gallery Collection</h2>
+    <div class="gallery-all__container" 
+      style="grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
+      align-items: center;
+      padding: 2rem 5rem;">
+
+      <% user.forEach(function(user) { %>
+      <% user.gallery.forEach(function(gallery) { %>
+        <div class="ui card">
+          <div class="image-container">
+              <img src="<%= gallery.image %>" class="gallery-image">
+          </div>
+          <div class="content">
+            <a class="header"><h3><%= gallery.name %></h3></a>
+            <div class="meta">
+              <span class="date">Created in <%= gallery.created.toDateString() %></span>
+            </div>
+            
+            <p> <a class="avatar">
+              <% if(gallery.author.image.length < 1) { %>
+                  <img src ="https://www.pngitem.com/pimgs/m/78-786501_black-avatar-png-user-icon-png-transparent-png.png">
+              <% } else { %>
+                  <img src="<%= gallery.author.image %>"> 
+              <% } %>
+            </a>
+            <p>Created by <a href="/users/<%= gallery.author.id %>"><%= gallery.author.username %></a></p>
+            <div class="extra" style="display: flex; justify-content: center; align-items: center;">
+            <i class="heart icon" style="color: var(--like)"></i>
+            <span style="font-weight: 700; color: var(--like); margin-top: .5rem;"><%= gallery.likes.length %></span>
+            <i class="comment icon" style="color: var(--comment); margin-left: .7rem;"></i>
+            <span style="font-weight: 700; color: var(--comment); margin-top: .5rem;"><%= gallery.comments.length %></span>
+          </div>
+  
+          </div>
+          <div class="extra content" style="display: flex; justify-content: center;">
+            <a>
+              <a class="ui violet button big" style="border-radius: 25px;" href="/galleries/<%= gallery._id %>">View</a>
+            </a>
+          </div>
+        </div>
+        <% }) %>
+        <% }) %>
+      </div>
+
+
+
+        <section class="gallery-container" id="gallery">
+          <h2 class="gallery-header">Our Users</h2>
+        
+          <div class="gallery-wrapper">
+            <% user.forEach(function(user) { %>
+              <% user.gallery.forEach(function(gallery) { %>
+                <div class="card-image">
+                  <div class="card-image-side card-image-side-front card-image-side-front-1">
+                    <img src="<%= gallery.image %>" width="100%" height ="100%">
+                  </div>
+              <% }) %>
+              <div class="card-image-side card-image-side-back">
+                <div class="cta">
+                  <div class="home-image-container">
+                  <% if(user.image === '') { %>
+                    <img src="https://www.pngitem.com/pimgs/m/78-786501_black-avatar-png-user-icon-png-transparent-png.png">
+                <% } else { %>
+                    <img src="<%= user.image %>"> 
+                <% } %>    
+              </div>      
+                <div class="artist-description">
+                    <ul class="artist-details">
+                      <li><%= user.firstName %> <%= user.lastName %></li>
+                      <li><%= user.username %></li>
+                      <li><%= user.city %></li>
+                    </ul>
+                    
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, ipsam fugit necessitatibus nostrum aperiam at?</p>
+                 
+                    <a href="/users/<%= user._id %>"><button class="btn-check-work">Check Work</button></a>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+            <% }) %>
+             
+</div>
+</section>
+
+<div class="posts-home__container">
+  <h1>Latest Posts</h1>
+  <div class="posts-wrapper">
+  <% if(posts.length < 1) { %>
+    <p>No Posts Yet</p>
+  <% } else { %>
+
+      <div class="ui divided items" style="padding: 5rem 10rem;">
+          <% posts.forEach(function(post) { %>
+
+          <div class="item">
+            <div class="image">
+              <img src="<%= post.image %>" alt="<%= post.image %>">
+          </div>
+            <div class="content">
+              <a class="header"><a href="/posts/<%= post._id %>"><%= post.name %></a>
+              <div class="meta">
+                <span class="cinema">Author: <a href="/users/<%= post.author.id %>"><%= post.author.username %></a></span>
+                <a class="avatar">
+                  <div class="posts-user-image-container">
+                  <% if(post.author.avatar.length < 1) { %>
+                      <img src ="https://www.pngitem.com/pimgs/m/78-786501_black-avatar-png-user-icon-png-transparent-png.png" style="width: 100%">
+                  <% } else { %>
+                      <img src="<%= post.author.avatar %>"> 
+                  <% } %>
+                </div>
+                </a>
+              </div>
+              <div class="description">
+                  <p><%= post.description.substring(0, 300) %>...</p>
+              </div>
+              <div class="meta">
+                <span class="date">Created on <%= post.created.toDateString() %></span>
+              </div>
+              <div class="extra">
+                <div class="ui label"><i class="thumbs up icon"></i>Likes</div>
+                <div class="ui label"><i class="comment icon"></i>Comments</div>
+                <a class="ui right floated violet button" href="/posts/<%= post._id %>">
+                  Read More
+                  <i class="right chevron icon"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <% }) %>
+
+        </div>
+        <% } %>
+
+  </div>
+</div>
+
+
+<% if(!currentUser) { %>
+  <%- include("partials/signup") %>
+
+<% } %>
+
+    </div>
+    
+
+
+<%- include("partials/footer") %>
+

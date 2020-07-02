@@ -1,0 +1,43 @@
+<%- include("../partials/header") %>
+
+<div class="post-review__container">
+    <div style="width: 80vw; display: flex; justify-content: flex-start; align-items: center;">
+        <a href="/posts" class="grow"><i class="chevron circle left icon" style="color: orange"></i>Back to Posts</a>
+      </div>         
+      <h2><%= post.name %></h2>
+<div class="post-author__wrapper">
+<h3><a href="/users/<%= post.author.id %>"><%= post.author.username %></a></h3>
+<a class="avatar">
+    <div class="posts-user-image-container">
+    <% if(post.author.avatar.length === '') { %>
+        <img src ="https://www.pngitem.com/pimgs/m/78-786501_black-avatar-png-user-icon-png-transparent-png.png" style="width: 5%">
+    <% } else { %>
+        <img src="<%= post.author.avatar %>"> 
+    <% } %>
+    </div>
+  </a>
+  <span class="date">Created on <%= post.created.toDateString() %></span>
+
+</div>
+
+<img src="<%= post.image %>" style="width: 100%">
+<div class="post-review__content">
+    <p><%= post.description %></p>
+</div>
+<h3>Written By: <%= post.author.firstName %> <%= post.author.lastName %></h3>
+
+<% if(currentUser && post.author.id.equals(currentUser.id)) { %>
+    <div class="review-edit-delete__wrapper">
+        <a class="ui button basic orange grow" href="/posts/<%= post._id %>/edit"><i class="edit outline icon"></i>Edit Post</a>
+        <form id="delete-form" action="/posts/<%= post._id %>/?_method=DELETE" method="POST">
+            <button class="ui button basic red grow">
+                <i class="trash alternate outline icon"></i>
+                Delete Post
+            </button>
+        </form>
+        </div>
+<% } %>
+
+</div>
+
+<%- include("../partials/footer") %>

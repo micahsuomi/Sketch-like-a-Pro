@@ -1,0 +1,39 @@
+/* Flash messages container */
+.flash-messages__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.flash-messages__container .message {
+    width: 43rem;
+    padding: 2rem!important;
+    position: absolute!important;
+    top: 50%;
+    z-index: 5;
+    animation-name: flashDisappear;
+    animation-duration: 5000ms;
+    animation-fill-mode: forwards;
+}
+
+.warning {
+    color: orangered;
+    
+}
+@keyframes flashDisappear{
+    0%{
+      opacity: 1;
+      /* transform: rotateX(90deg); */
+    }
+    50%{
+      opacity: 0.5;
+      /* transform: rotateX(0deg); */
+    }
+    100%{
+      display: none;
+      opacity: 0;
+      /* transform: rotateX(90deg); */
+    }
+  }
